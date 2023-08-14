@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ej4guia2;
 
-/**
- *
- * @author sabrina
- */
-public class MenuGeneral extends javax.swing.JFrame {
+import java.util.TreeSet;
 
-    /**
-     * Creates new form MenuGeneral
-     */
+public class MenuGeneral extends javax.swing.JFrame {
+public static TreeSet<Productos>listaProductos=new TreeSet();
     public MenuGeneral() {
         initComponents();
+         this.setLocationRelativeTo(null);
+         cargarProductos();
     }
 
     /**
@@ -27,25 +20,136 @@ public class MenuGeneral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        escritorio = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmProductos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jmRubro = new javax.swing.JMenuItem();
+        jmNombre = new javax.swing.JMenuItem();
+        jmPrecio = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DeTodo S.A.");
+        setPreferredSize(new java.awt.Dimension(542, 524));
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 501, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(escritorio)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(escritorio)
+        );
+
+        jMenu1.setText("Administracion");
+
+        jmProductos.setText("Productos");
+        jmProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmProductosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmProductos);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Consultas");
+
+        jmRubro.setText("Por Rubro");
+        jmRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmRubroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmRubro);
+
+        jmNombre.setText("Por Nombre");
+        jmNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmNombreActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmNombre);
+
+        jmPrecio.setText("Por Precio");
+        jmPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPrecioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmPrecio);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jmNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNombreActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      ListaNombre bpn=new ListaNombre();
+      bpn.setVisible(true);
+      escritorio.add(bpn);
+      escritorio.moveToFront(bpn);
+       
+    }//GEN-LAST:event_jmNombreActionPerformed
+
+    private void jmRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRubroActionPerformed
+           escritorio.removeAll();
+      escritorio.repaint();
+      ListaRubro bpn=new ListaRubro();
+      bpn.setVisible(true);
+      escritorio.add(bpn);
+      escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmRubroActionPerformed
+
+    private void jmPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPrecioActionPerformed
+              escritorio.removeAll();
+      escritorio.repaint();
+      ListaPrecio bpn=new ListaPrecio();
+      bpn.setVisible(true);
+      escritorio.add(bpn);
+      escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmPrecioActionPerformed
+
+    private void jmProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductosActionPerformed
+              escritorio.removeAll();
+      escritorio.repaint();
+      GestionProductos bpn=new GestionProductos();
+      bpn.setVisible(true);
+      escritorio.add(bpn);
+      escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmProductosActionPerformed
+
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -79,5 +183,30 @@ public class MenuGeneral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jmNombre;
+    private javax.swing.JMenuItem jmPrecio;
+    private javax.swing.JMenuItem jmProductos;
+    private javax.swing.JMenuItem jmRubro;
     // End of variables declaration//GEN-END:variables
+private void cargarProductos(){
+    listaProductos.add(new Productos(10,"azucar 1 kg",180.75,5,Categoria.COMESTIBLE));
+listaProductos.add(new Productos(12,"yerba mate",850,10,Categoria.COMESTIBLE));
+listaProductos.add(new Productos(5,"aceite de girasol",250,5,Categoria.COMESTIBLE));
+
+listaProductos.add(new Productos(1,"lavandina ayudin",400,14,Categoria.LIMPIEZA));
+listaProductos.add(new Productos(2,"detergente",600,15,Categoria.LIMPIEZA));
+listaProductos.add(new Productos(3,"esponja",250,5,Categoria.LIMPIEZA));
+
+listaProductos.add(new Productos(20,"perfume dior",15000,25,Categoria.PERFUMERIA));
+listaProductos.add(new Productos(21,"perfume nina richi",30000,35,Categoria.PERFUMERIA));
+listaProductos.add(new Productos(22,"perfume kenzo",20000,45,Categoria.PERFUMERIA));
+}
+
+
+
 }
