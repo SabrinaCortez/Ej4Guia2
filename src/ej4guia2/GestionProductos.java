@@ -1,6 +1,8 @@
 
 package ej4guia2;
 
+import javax.swing.JOptionPane;
+
 
 public class GestionProductos extends javax.swing.JInternalFrame {
 
@@ -37,7 +39,6 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jbCodigo = new javax.swing.JButton();
 
-        setClosable(true);
         setTitle("Gestion de productos");
 
         jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 3, 18)); // NOI18N
@@ -54,14 +55,39 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         jLabel6.setText("Rubro");
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jbCodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ej4guia2/lupita2.jpg"))); // NOI18N
+        jbCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCodigoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,6 +183,46 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+       cargarDatos();
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        jtCodigo.setText("");
+         jtDescripcion.setText("");
+          jtPrecio.setText("");
+           jtStock.setText("");
+            jbCategoria.setSelectedItem(null);
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        borrarDatos();
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCodigoActionPerformed
+       
+        int codigo= Integer.parseInt( jtCodigo.getText());
+        boolean bandera=false;
+         for(Productos prod:MenuGeneral.listaProductos){
+           if (prod.getCodigo()==codigo){
+               bandera=true;
+           }
+}
+         if(bandera==true){
+             jtCodigo.getText();
+              jtDescripcion.getText();
+              jtPrecio.getText();
+              jbCategoria.getSelectedObjects();
+              jtStock.getText();
+         }else{
+            JOptionPane.showMessageDialog(this,"El codigo no esta registrado"); 
+         }
+    }//GEN-LAST:event_jbCodigoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -188,6 +254,15 @@ private void cargarDatos(){
  
 }
 
+private void borrarDatos(){
+     int codigo= Integer.parseInt( jtCodigo.getText());
+   String descripcion= jtDescripcion.getText();
+   Double precio= Double.parseDouble(jtPrecio.getText()) ;
+    int stock= Integer.parseInt(jtStock.getText());
+    Categoria categoria=(Categoria)jbCategoria.getSelectedItem();
+    
+    MenuGeneral.listaProductos.remove(new Productos(codigo,descripcion,precio,stock,categoria));
+}
 private void cargarCombo(){
      jbCategoria.addItem(null); 
     jbCategoria.addItem(Categoria.COMESTIBLE); 
